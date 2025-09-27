@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>정렬 &#8212; core_pybook</title>
+    <title>10. 정렬 &#8212; core_pybook</title>
   
   
   
@@ -63,6 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch10';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="9. 탐색" href="ch09.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -176,7 +175,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ch01.html">1. 프로그래밍이란?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch02.html">2. 파이썬 프로그래밍 개발 환경</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch03.html">3. 기초 I(기본 자료형, 변수, 함수)</a></li>
@@ -185,6 +184,8 @@
 <li class="toctree-l1"><a class="reference internal" href="ch06.html">6. 기초 IV(함수, 모듈)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch07.html">7. 알고리즘</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch08.html">8. 재귀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch09.html">9. 탐색</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. 정렬</a></li>
 </ul>
 
     </div>
@@ -380,16 +381,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">버블 정렬</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">선택 정렬</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">합병 정렬</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">퀵 정렬</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">연습 문제</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">문제</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">문제</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">문제</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">문제</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 버블 정렬</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2. 선택 정렬</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.3. 합병 정렬</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.4. 퀵 정렬</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.5. 연습 문제</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.5.1. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">10.5.2. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">10.5.3. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">10.5.4. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">10.5.5. 문제</a></li>
 </ul>
 </li>
 </ul>
@@ -404,7 +405,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>정렬<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">10. </span>정렬<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>정렬<font size="2">sorting</font>은 모음 객체에 포함된 항목들을 특정 크기 기준에 따라 오름차순 또는 내림차순으로 위치하도록 하는 과정을 말한다. 예를 들어, 문자열들로 이루어진 리스트의 항목을 알파벳 순서대로 정렬하거나 도시들의 리스트를 인구, 면적 등으로 정렬할 수 있다. 이진탐색에서 정렬된 리스트가 얼마나 유용하게 활용되는지를 확인하였다.</p>
 <p>일반적으로 정렬 알고리즘의 시간복잡도 분석에 사용되는 기본 단위연산으로는 다음 두 가지가 사용된다.</p>
 <ul class="simple">
@@ -412,7 +413,7 @@ document.write(`
 <li><p>두 항목의 자리 교환 : 예를 들어, 보다 작은 값을 보다 큰 값보다 왼편에 위치하도록 해야 함.</p></li>
 </ul>
 <section id="id2">
-<h2>버블 정렬<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1. </span>버블 정렬<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>버블 정렬<font size="2">bubble sort</font>은 연속된 두 수를 비교하여 필요한 경우 작은 값은 왼쪽으로, 큰 값은 오른쪽으로 자리를 바꾸는 일을 리스트 끝까지 반복하는 <strong>패스</strong><font size="2">pass</font>과정을 리스트가 정렬될 때까지 반복하는 알고리즘이다. 예를 들어, 다음은 버블 정렬로 리스트를 정렬하는 첫째 패스 과정이다.</p>
 <ol class="arabic simple">
 <li><p>처음 두 항목을 비교한다. <code class="docutils literal notranslate"><span class="pre">5</span></code>가 <code class="docutils literal notranslate"><span class="pre">13</span></code>보다 작으므로, 자리교환은 없다.</p></li>
@@ -501,7 +502,7 @@ document.write(`
 <p>버블 정렬은 코드로 구현하기 쉽지만 정렬하는 데에 다른 정렬 기법에 비해 오랜 시간이 걸리는 비효율적인 방법이다.</p>
 </section>
 <section id="id3">
-<h2>선택 정렬<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2. </span>선택 정렬<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>선택 정렬<font size="2">selection sort</font>은 버블 정렬의 단점인 자리교환 횟수를 패스당 최대 한 번만 수행하도록 개선한 기법으로, 기본적으로 작동과정은 버블 정렬과 동일하다. 다만 자리교환을 바로 실행하는 것이 아니라 패스 별로 최솟값을 확인한 다음 최종적으로 한 번 자리교환을 실행한다. 예를 들어, 다음은 선택 정렬로 리스트를 정렬하는 과정이다.</p>
 <ol class="arabic simple">
 <li><p>주어진 리스트는 아래와 같다.</p></li>
@@ -556,7 +557,7 @@ document.write(`
 <p>선택 정렬에서의 크기 비교는 버블 정렬때와 동일하게 발생하여 시간복잡도는 <span class="math notranslate nohighlight">\(O(n^2)\)</span>이다. 다만, 자리교환 횟수가 최대 n-1번 발생하여 버블 정렬의 경우보다 선택 정렬이 조금 더 빠르다.</p>
 </section>
 <section id="id4">
-<h2>합병 정렬<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3. </span>합병 정렬<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>합병 정렬 또는 병합 정렬<font size="2">merge sort</font>은 분할 정복 기법을 이용한 정렬 알고리즘으로, 합병 정렬에 사용되는 분할과 정복은 다음과 같다.</p>
 <ul class="simple">
 <li><p>분할 : 리스트를 반복적으로 이등분해서 생성된 모든 리스트의 길이가 1이 되도록 한다.</p></li>
@@ -691,7 +692,7 @@ document.write(`
 <p>합병 정렬의 분할 과정에서는 <span class="math notranslate nohighlight">\(\log_2 n\)</span>번 분할이 발생하며, 크기 비교나 자리 교환은 하지 않는다. 반면, 두 개의 리스트를 합쳐서 길이가 <span class="math notranslate nohighlight">\(m\)</span>인 리스트를 생성할 때 필요한 연산은 항목 비교와 항목 업데이트이며, 이는 <span class="math notranslate nohighlight">\(O(m)\)</span>의 시간복잡도를 갖는다. 따라서, 합병 정렬의 시간복잡도는 <span class="math notranslate nohighlight">\(O(n\log n)\)</span>이다.</p>
 </section>
 <section id="id5">
-<h2>퀵 정렬<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4. </span>퀵 정렬<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>퀵 정렬<font size="2">quick sort</font>은 합병 정렬과 마찬가지로 분할 정복 기법을 사용하는 알고리즘으로, 분할 과정이 경우에 따라 이등분이 아닌 한쪽으로 치우치는 방식으로 진행될 수 있다.</p>
 <p>퀵 정렬은 분할과 정복을 동시에 진행하는 데, 피벗<font size="2">pivot, 기준값</font>으로 지정된 값보다 작은 값들은 피벗 왼쪽으로, 같거나 큰 값들은 피벗 오른쪽으로 이동시킨다. 피벗으로 사용된 값의 위치를 기준으로 좌우 두 개의 부분 리스트로 분할한 후 동일 과정을 재귀적으로 반복한다.</p>
 <p><strong>피벗 지정</strong><br />
@@ -775,9 +776,9 @@ document.write(`
 <p>피벗을 기준으로 분할할 때 이상적인 경우 기존의 리스트를 거의 이등분한다. 이 경우 분할 횟수는 <span class="math notranslate nohighlight">\(\log n\)</span>이다. 여기서 <span class="math notranslate nohighlight">\(n\)</span>은 입력 리스트의 길이를 나타낸다. 그리고 한 번 분할할 때마다 피벗과 나머지 값들이 비교되고 필요에 따라 자리교환이 발생하는 데 이에 대한 시간복잡도는 <span class="math notranslate nohighlight">\(O(n)\)</span>이다. 따라서 최선의 경우 퀵 정렬 알고리즘의 시간복잡도는 <span class="math notranslate nohighlight">\(O(n\log n)\)</span>이다. 하지만 최악의 경우, 분할이 한쪽으로 쏠릴 수도 있다. 예를 들어, 거의 정렬되어 있는 리스트일 경우 피벗을 기준으로 1대 n-1개의 부분 리스트로 분할될 수 있다. 이런 경우, <span class="math notranslate nohighlight">\(n\)</span>번에 가까운 분할이 필요하며, 시간복잡도는 <span class="math notranslate nohighlight">\(O(n^2)\)</span>이 나온다.</p>
 </section>
 <section id="id6">
-<h2>연습 문제<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.5. </span>연습 문제<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <section id="id7">
-<h3>문제<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.5.1. </span>문제<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>A는 문서 정렬을 하기로 했다. 문서 이름 형식은 다음과 같다. 가장 먼저 문서의 버전이 숫자로 적혀있고, 그 다음은 문서의 제목이 공백없이 적혀있다. 그리고 중요 문서라 제목에 오탈자가 나는 것을 방지하기 위해 동일한 제목이 공백없이 역순으로 적혀있다. 즉, 문서 이름의 구성은 (버전)(문서제목)(역순문서제목)이다. 문서의 버전이 높을 수록 최신 문서이다.</p>
 <ul class="simple">
 <li><p>제목이 <code class="docutils literal notranslate"><span class="pre">testresult</span></code>이고 버전이 1인 문서</p></li>
@@ -805,7 +806,7 @@ document.write(`
 </div>
 </section>
 <section id="id8">
-<h3>문제<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.5.2. </span>문제<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>어린이 합창단 A와 B는 마지막 곡을 함께 부르기로 했다. 두 합창단은 키 순서대로 무대에 입장하는 데, 마지막 곡을 부르기 위해 키를 기준으로 두 줄로 선 합창단 A와 B는 한 줄로 서야 한다. 합창반 선생님은 다음과 같은 방식으로 두 줄을 한 줄로 합치려고 한다. 단, 합창단 A와 B는 중복된 키가 없고, 각각은 정렬되어 있다고 가정한다.</p>
 <p>“우선 새로운 빈 줄을 만든다. A팀의 가장 작은 아이와 B팀의 가장 작은 아이의 키를 비교한 다음, 더 작은 아이가 새로운 줄로 간다. 그 이후에 다시 남은 아이들 중 A팀에서 가장 작은 아이와 B팀에서 가장 작은 아이를 비교한 뒤 더 작은 아이가 새로운 줄의 뒤쪽에 선다. 이런 식으로 원래의 한 줄이 모두 없어질 때까지 한 뒤, 남아있는 다른 줄의 아이는 모두 그대로 한 명씩 새로운 줄의 뒤쪽으로 간다.”</p>
 <p>A와 B 합창단원의 이름과 키가 딕셔너리 형태로 주어졌을 때, 두 딕셔너리를 입력 받아 키 순으로 정렬된 이름 리스트를 반환하는 <code class="docutils literal notranslate"><span class="pre">merge_chorus()</span></code>함수를 정의하여라. 이때, 줄이 합쳐지는 과정도 보여줘라.</p>
@@ -842,7 +843,7 @@ document.write(`
 </div>
 </section>
 <section id="id9">
-<h3>문제<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.5.3. </span>문제<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>A 회사는 선착순으로 사은품을 제공하기 위해 도착 순서대로 번호표를 나누어 줬고, 일정 시간이 지난 후 사은품을 제공하기로 했다. 시간이 되어 담당자가 와서 보니, 고객들이 임의의 순서대로 줄을 서 있었고, 일부 고객들은 없었다. 담당자는 번호가 작은 순서대로 현장에 있는 고객들을 줄 짓고 앞에 있는 n명에게 사은품을 제공해야 한다. 담당자는 혼잡을 줄이고, 고객들을 줄 세우기 위해 다음과 같은 방법을 생각해 냈다.</p>
 <p>“두 번째 사람이 자기보다 작은 번호를 가진 사람이 등장할 때까지 앞 사람과 자리를 바꾼다. 첫 번째 자리로 오면 비교를 중지한다. 세 번째 사람부터 앞 사람들과 비교하여 자기 자리를 찾아 들어가는 과정을 반복한다.”</p>
 <p>임의로 서 있는 번호 리스트와 사은품의 개수를 입력 받아, 위의 방법대로 정렬된 리스트와 마지막으로 사은품을 수령하는 번호를 튜플로 묶어 반환하는 <code class="docutils literal notranslate"><span class="pre">event_sort()</span></code> 함수를 정의하여라.</p>
@@ -857,7 +858,7 @@ document.write(`
 </div>
 </section>
 <section id="id10">
-<h3>문제<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.5.4. </span>문제<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>어구전철<font size="2">anagram, 애너그램</font>은 문자의 순서를 변경하여 다른 단어나 문장을 만드는 놀이로, 때로는 암호로 사용하기도 한다. 예를 들어, ‘자문’ - ‘문자’, ‘listen’ - ‘silent’, ‘TOM MARVOLO RIDDLE’ - ‘I AM LORD VOLDEMORT’ 등이 있다.</p>
 <p>(1) 파이썬의 sort(<code class="docutils literal notranslate"><span class="pre">sorted()</span></code>, <code class="docutils literal notranslate"><span class="pre">.sort()</span></code> 등)를 사용하지 않고, 두 개의 문자열을 입력 받아 어구전철인지를 판별하는 <code class="docutils literal notranslate"><span class="pre">is_anagram()</span></code> 함수를 정의하여라. 어구전철을 확인할 때, 공백은 무시한다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">is_anagram</span><span class="p">(</span><span class="s1">&#39;문자&#39;</span><span class="p">,</span> <span class="s1">&#39;주문&#39;</span><span class="p">))</span>  
@@ -879,7 +880,7 @@ document.write(`
 <p>(2) 파이썬의 <code class="docutils literal notranslate"><span class="pre">sorted()</span></code>함수를 사용하여, 위의 함수를 정의하여라.</p>
 </section>
 <section id="id11">
-<h3>문제<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.5.5. </span>문제<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>정수 리스트를 인자로 받아서 리스트의 각 항목을 조합하여 만들 수 있는 가장 작은 수를 반환하는 함수 <code class="docutils literal notranslate"><span class="pre">min_num()</span></code>을 정의하라.
 (단, <U>정수 리스트의 항목은 모두 사용해야 하며, 정렬해주는 함수나 메서드를 사용하지 않는다.)</U></p>
 <p>예를 들어, 2, 7, 10을 조합하여 만들 수 있는 가장 작은 수는 1027이고,
@@ -942,6 +943,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="ch09.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>탐색</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -958,16 +968,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">버블 정렬</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">선택 정렬</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">합병 정렬</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">퀵 정렬</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">연습 문제</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">문제</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">문제</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">문제</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">문제</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 버블 정렬</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2. 선택 정렬</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.3. 합병 정렬</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.4. 퀵 정렬</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.5. 연습 문제</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.5.1. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">10.5.2. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">10.5.3. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">10.5.4. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">10.5.5. 문제</a></li>
 </ul>
 </li>
 </ul>

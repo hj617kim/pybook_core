@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch07';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8. 탐색" href="ch08.html" />
+    <link rel="next" title="8. 재귀" href="ch08.html" />
     <link rel="prev" title="6. 기초 IV(함수, 모듈)" href="ch06.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,7 +184,9 @@
 <li class="toctree-l1"><a class="reference internal" href="ch05.html">5. 기초 III(제어문, 함수, 이터러블과 이터레이터, 예외처리)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch06.html">6. 기초 IV(함수, 모듈)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">7. 알고리즘</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch08.html">8. 탐색</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch08.html">8. 재귀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch09.html">9. 탐색</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch10.html">10. 정렬</a></li>
 </ul>
 
     </div>
@@ -585,7 +587,7 @@ m과 n의 최대공약수를 구할 때,</p>
 </ul>
 </li>
 </ul>
-<p>아래 코드는 1부터 n까지 자연수의 합을 계산하는 함수를 차례대로 더해가는 알고리즘으로 구현하여라.</p>
+<p>아래 코드는 1부터 n까지 자연수의 합을 계산하는 함수를 차례대로 더하는 알고리즘으로 구현하여라.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">timeit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
@@ -619,13 +621,11 @@ m과 n의 최대공약수를 구할 때,</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03189110099992831
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.012930393999795342
+0.1363423180000609
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3360084320011083
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.791895141999703
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4962860499999806
 </pre></div>
 </div>
 </div>
@@ -654,9 +654,9 @@ m과 n의 최대공약수를 구할 때,</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00011230400014028419
-7.889399967098143e-05
-8.210299893107731e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.427000001465785e-05
+3.37370001943782e-05
+3.518600033203256e-05
 </pre></div>
 </div>
 </div>
@@ -844,7 +844,7 @@ m과 n의 최대공약수를 구할 때,</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>탐색</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>재귀</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
