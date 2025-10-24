@@ -1,0 +1,1626 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>13. 기초 추상 자료형 &#8212; core_pybook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch13';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="12. 기초 V(클래스)" href="ch12.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">core_pybook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    소개
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ch01.html">1. 프로그래밍이란?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch02.html">2. 파이썬 프로그래밍 개발 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch03.html">3. 기초 I(기본 자료형, 변수, 함수)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch04.html">4. 기초 II(모음 자료형)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch05.html">5. 기초 III(제어문, 함수, 이터러블과 이터레이터, 예외처리)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch06.html">6. 기초 IV(함수, 모듈)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch07.html">7. 알고리즘</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch08.html">8. 재귀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch09.html">9. 탐색</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch10.html">10. 정렬</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch11.html">11. 잔돈 지불 문제</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch12.html">12. 기초 V(클래스)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. 기초 추상 자료형</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/hj617kim/core_pybook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/hj617kim/core_pybook/issues/new?title=Issue%20on%20page%20%2Fch13.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ch13.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>기초 추상 자료형</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.1. 스택</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack">13.1.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> 추상 자료형</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">13.1.2. 스택 자료구조 구현</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">13.2. 큐</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue">13.2.1. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> 추상 자료형</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">13.2.2. 큐 자료구조 구현</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">13.3. 덱</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deque">13.3.1. <code class="docutils literal notranslate"><span class="pre">Deque</span></code> 추상 자료형</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.3.2. 덱 자료구조 구현</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">13.4. 연습문제</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">13.4.1. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">13.4.2. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">13.4.3. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">13.4.4. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">13.4.5. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">13.4.6. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">13.4.7. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">13.4.8. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">13.4.9. 문제</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">13. </span>기초 추상 자료형<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2><span class="section-number">13.1. </span>스택<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>스택<font size="2">stack</font>은 여러 개의 값을 가지며 값들 사이의 순서가 중요한 선형 자료형이다. 항목의 추가 및 삭제는 보통 <strong>탑</strong><font size="2">top</font>이라 불리는 한쪽 끝에서만 허용된다. 반면에 다른 한 쪽 끝은 <strong>베이스</strong><font size="2">base</font>라 한다.<br />
+스택은 아래 그림처럼 데이터를 들어온 순으로 쌓아 올린 형상을 생각하면 된다.</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/hj617kim/core_pybook/master/images/ch09/stack01.png" style="width:220px;">
+</div>
+<p>아래 그림처럼 스택은 들어온 순서의 역순으로 삭제되는 선입후출<font size="2">Last In First Out, LIFO</font>로 처리된다.</p>
+<ul class="simple">
+<li><p>베이스 : 가장 먼저 추가된 항목</p></li>
+<li><p>탑 : 가장 나중에 추가된 항목이며 가장 먼저 삭제될 대상</p></li>
+</ul>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/hj617kim/core_pybook/master/images/ch09/stack02.png" style="width:250px;">
+</div>
+<p><strong>활용 예제</strong> : 인터넷 브라우저의 ‘뒤로가기(Back)’ 버튼<br />
+웹페이지가 변경될 때마다 순서를 기억해 둔 다음에 ‘뒤로가기’ 버튼을 누르면 역순으로 이전 웹페이지를 보여준다.</p>
+<p><strong>활용 예제</strong> : 응용 프로그램의 되돌리기<font size="2">undo</font> 기능<br />
+변경될 때마다 순서를 기억해 둔 다음에 되돌리기 버튼 또는 ctrl + z를 누르면 마지막에 실행된 것부터 실행을 취소한다.</p>
+<section id="stack">
+<h3><span class="section-number">13.1.1. </span><code class="docutils literal notranslate"><span class="pre">Stack</span></code> 추상 자료형<a class="headerlink" href="#stack" title="Link to this heading">#</a></h3>
+<p>스택 추상 자료형을 구체적인 파이썬 자료구조<font size="2">data structure</font>로 구현하려면 갖추어야 하는 기본 기능은 다음과 같다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Stack()</span></code> : 비어 있는 스택 생성. 생성자의 역할.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">push(item)</span></code> : 새로운 항목을 탑<font size="2">top</font>으로 추가.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pop()</span></code> : 탑 항목 삭제. 삭제된 항목 반환.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">peek()</span></code> : 탑 항목 반환. 하지만 삭제하지는 않음.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_empty()</span></code> : 스택이 비었는지 여부 판단. 불리언 값 반환.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size()</span></code> : 항목 개수 반환.</p></li>
+</ul>
+<p>아래 표는 스택 생성과 함께 다양한 스택 관련 연산의 작동법을 소개한다. 파이썬은 스택 추상 자료형을 별도로 제공하지는 않지만, 리스트<code class="docutils literal notranslate"><span class="pre">list</span></code>가 스택의 모든 연산을 지원한다.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>스택 연산</p></th>
+<th class="head text-left"><p>스택 항목</p></th>
+<th class="head text-center"><p>반환값</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">Stack()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.is_empty()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.push(2)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.push('Hello')</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">'Hello']</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.peek()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">'Hello']</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">'Hello'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.push(3.2)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">'Hello',</span> <span class="pre">3.2]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.size()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">'Hello',</span> <span class="pre">3.2]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.is_empty()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">'Hello',</span> <span class="pre">3.2]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.push(True)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">'Hello',</span> <span class="pre">3.2,</span> <span class="pre">True]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.pop()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">'Hello',</span> <span class="pre">3.2]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.pop()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">'Hello']</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">3.2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s.size()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">'Hello']</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">13.1.2. </span>스택 자료구조 구현<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>스택 자료구조를 <code class="docutils literal notranslate"><span class="pre">Stack</span></code> 클래스로 구현하기 위해 리스트를 항목들의 저장 장치로 활용하며, 앞서 소개한 기능들은 모두 메서드로 정의한다. 스택의 탑 역할은 리스트의 오른쪽 끝(마지막 항목)이 수행하도록 한다. 그러면 리스트의 <code class="docutils literal notranslate"><span class="pre">pop()</span></code>과 <code class="docutils literal notranslate"><span class="pre">append()</span></code>를 잘 활용할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Stack</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;리스트를 활용한 스택 구현&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;새로운 스택 생성&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;스택 표기법: &lt;[1, 2, 3]&gt; 등등&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;비었는지 여부 확인&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;새 항목 추가&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;항목 제거&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;탑 항목 반환&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;항목 개수 반환&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">참고</p>
+<p>리스트의 첫 번째 항목을 스택의 탑으로 하려면 <code class="docutils literal notranslate"><span class="pre">pop(0)</span></code>와 <code class="docutils literal notranslate"><span class="pre">insert(0,</span> <span class="pre">item)</span></code>을 사용하면 된다.</p>
+</div>
+<p>위 표를 코드로 구현하면 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">is_empty</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;[]&gt;
+True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">peek</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;[2, &#39;Hello&#39;]&gt;
+Hello
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mf">3.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">is_empty</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;[2, &#39;Hello&#39;, 3.2]&gt;
+3
+False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;[2, &#39;Hello&#39;, 3.2, True]&gt;
+True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;[2, &#39;Hello&#39;, 3.2]&gt;
+3.2
+2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="proof example admonition" id="stack-example01">
+<p class="admonition-title"><span class="caption-number">Example 13.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>함수나 연산 실행에 사용되는 괄호는 짝이 맞아야 한다. 즉, 여는 괄호와 닫는 괄호의 짝이 맞아야 한다. 파이썬의 경우 괄호가 맞지 않으면 구문 오류<code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>가 발생한다.</p>
+<p>스택을 이용하여 괄호로 이루어진 문자열이 짝이 맞는 괄호들로 이루어졌는지 여부를 판단하는 함수<code class="docutils literal notranslate"><span class="pre">par_checker()</span></code> 를 구현하여라.</p>
+</section>
+</div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">par_checker</span><span class="p">(</span><span class="s2">&quot;((()))&quot;</span><span class="p">))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">par_checker</span><span class="p">(</span><span class="s2">&quot;()()()&quot;</span><span class="p">))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">par_checker</span><span class="p">(</span><span class="s2">&quot;((())&quot;</span><span class="p">))</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">par_checker</span><span class="p">(</span><span class="s2">&quot;)(&quot;</span><span class="p">))</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>스택 활용법은 다음과 같다. 괄호로 이루어진 문자열이 주어졌을 때, 왼편부터 시작하여 여는 괄호와 닫는 괄호를 만날 때마다 아래 작업을 반복한다.</p>
+<ul class="simple">
+<li><p>여는 괄호(<code class="docutils literal notranslate"><span class="pre">(</span></code>) : 스택에 추가</p></li>
+<li><p>닫는 괄호(<code class="docutils literal notranslate"><span class="pre">)</span></code>) : 스택의 탑 항목 삭제</p></li>
+</ul>
+<p>위 작업을 반복하다 보면 아래 세 가지 경우가 발생한다.</p>
+<ul class="simple">
+<li><p>문자열을 다 확인하기 전에 스택이 비워지는 경우 - 닫는 괄호가 더 많기 때문.</p></li>
+<li><p>끝까지 다 확인했을 때 스택이 비워지지 않은 경우 - 여는 괄호가 더 많기 때문.</p></li>
+<li><p>위 두 경우가 아니면 모든 괄호의 짝은 맞음.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">par_checker</span><span class="p">(</span><span class="n">par_string</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">s</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">par_string</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="s2">&quot;(&quot;</span> <span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">s</span><span class="o">.</span><span class="n">is_empty</span><span class="p">()</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">is_empty</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">par_checker</span><span class="p">(</span><span class="s2">&quot;((()))&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">par_checker</span><span class="p">(</span><span class="s2">&quot;()()()&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">par_checker</span><span class="p">(</span><span class="s2">&quot;((())&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">par_checker</span><span class="p">(</span><span class="s2">&quot;)(&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+True
+False
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">13.2. </span>큐<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>큐<font size="2">queue</font>는 스택과 마찬가지로, 선형 자료형이다. 항목의 추가는 보통 <strong>꼬리</strong><font size="2">rear, tail</font>라 불리는 한 쪽 끝에서만 허용되고, 항목의 삭제는 <strong>머리</strong><font size="2">front, head</font>라고 불리는 다른 한 쪽 끝에서 이루어진다. 큐는 아래 그림처럼 입력된 순서대로 하나씩 삭제되는 형상을 생각하면 된다.</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/hj617kim/core_pybook/master/images/ch09/queue01.png" style="width:500px;">
+</div>
+<p>위의 그림처럼 큐는 먼저 들어온 항목이 먼저 나간다는 선입선출<font size="2">First In First Out, FIFO</font>원리를 따르며, 항목들의 추가와 삭제는 입력 순서에 따라 한쪽 방향으로 이동하는 방식이 철저하게 지켜진다.</p>
+<p><strong>활용 예제</strong> : 은행 창구 번호표 배분 장치<br />
+은행 창구에서 번호표를 배분하는 장치는 방문 순서대로 호출된다.</p>
+<p><strong>활용 예제</strong> : 프린터<br />
+프린터는 프린팅 과제가 생성된 순서대로 출력된다.</p>
+<section id="queue">
+<h3><span class="section-number">13.2.1. </span><code class="docutils literal notranslate"><span class="pre">Queue</span></code> 추상 자료형<a class="headerlink" href="#queue" title="Link to this heading">#</a></h3>
+<p>큐 추상 자료형을 구체적인 파이썬 자료구조<font size="2">data structure</font>로 구현하려면 갖추어야 하는 기본 기능은 다음과 같다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Queue()</span></code> : 비어 있는 큐 생성. 생성자의 역할.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enqueue(item)</span></code> : 새로운 항목을 꼬리<font size="2">rear, tail</font>에 추가. 반환값 없음.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dequeue()</span></code> : 머리 항목 삭제. 삭제된 항목 반환.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_empty()</span></code> : 큐가 비어있는지 여부 판단. 불리언 값 반환.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size()</span></code> : 항목 개수 반환.</p></li>
+</ul>
+<p>아래 표는 큐 생성과 함께 다양한 큐 관련 연산의 작동법을 소개한다. 파이썬의 리스트<code class="docutils literal notranslate"><span class="pre">list</span></code>는 큐의 모든 연산을 지원한다. 항목들의 저장을 위해 리스트를 사용하며, 큐의 머리 역할은 리스트의 오른쪽 끝(마지막 항목)이, 꼬리 역할은 왼쪽 끝(첫 번째 항목)이 수행한다.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>큐 연산</p></th>
+<th class="head text-left"><p>큐 항목</p></th>
+<th class="head text-center"><p>반환값</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">=</span> <span class="pre">Queue()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q.is_empty()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q.enqueue(2)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q.enqueue('Hello')</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">['Hello',</span> <span class="pre">2]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q.enqueue(3.2)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[3.2,</span> <span class="pre">'Hello',</span> <span class="pre">2]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q.size()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[3.2,</span> <span class="pre">'Hello',</span> <span class="pre">2]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q.is_empty()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[3.2,</span> <span class="pre">'Hello',</span> <span class="pre">2]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q.enqueue(True)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[True,</span> <span class="pre">3.2,</span> <span class="pre">'Hello',</span> <span class="pre">2]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q.dequeue()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[True,</span> <span class="pre">3.2,</span> <span class="pre">'Hello']</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q.dequeue()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[True,</span> <span class="pre">3.2]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">'Hello'</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">q.size()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[True,</span> <span class="pre">3.2]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id5">
+<h3><span class="section-number">13.2.2. </span>큐 자료구조 구현<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>리스트를 활용할 때 중요한 것은 머리와 꼬리를 어디로 설정하는가이다. 앞서 본 것처럼 꼬리는 리스트의 왼쪽편 끝, 머리는 리스트의 오른쪽편 끝으로 정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Queue</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;리스트를 활용한 큐 구현&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;새로운 큐 생성&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;큐 표기법: &lt;&lt;[1, 2, 3]&gt;&gt; 등등&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;&lt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="si">}</span><span class="s2">&gt;&gt;&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;비었는지 여부 확인&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">enqueue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;꼬리에 항목 추가&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">dequeue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;머리 항목 삭제&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;항목 개수 확인&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">is_empty</span><span class="p">())</span>
+<span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="mf">3.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+&lt;&lt;[3.2, &#39;Hello&#39;, 2]&gt;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">is_empty</span><span class="p">())</span>
+<span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
+<span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&lt;[True, 3.2]&gt;&gt;
+2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="proof example admonition" id="queue-example01">
+<p class="admonition-title"><span class="caption-number">Example 13.2 </span> (요세푸스 문제<font size="2">Josephus problem</font> 또는 요세푸스 순열<font size="2">Josephus permutation</font>)</p>
+<section class="example-content" id="proof-content">
+<p>n명이 동그랗게 둘러앉아 임의의 한 사람부터 순서를 세어 k번째 사람을 제외하는 게임을 아무도 남지 않을 때까지 계속한다. 자연수 n과 k를 입력받아 제외되는 사람의 순서를 반환하는 <code class="docutils literal notranslate"><span class="pre">josephus_permutation()</span></code> 함수를 정의하여라. 단, k &lt; n라고 가정한다.</p>
+<p>예를 들어, 7명의 사람이 있고, 3번째 사람을 제외할 때는 3 -&gt; 6 -&gt; 2 -&gt; 7 -&gt; 5 -&gt; 1 -&gt; 4 순서로 제외한다.</p>
+</section>
+</div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">josephus_permutation</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">[3, 6, 2, 7, 5, 1, 4]</span>
+</pre></div>
+</div>
+<p>큐 활용법은 다음과 같다.</p>
+<ol class="arabic simple">
+<li><p>사람들의 번호를 큐에 추가한다. 큐의 머리에는 1이 있고, 꼬리에는 n이 있다.</p></li>
+<li><p>큐의 머리에 있는 항목을 삭제 후 바로 꼬리에 추가한다.</p></li>
+<li><p>2의 과정을 k - 1번 반복한다. 그리고 k번째에는 머리에 있는 항목을 삭제한 후 꼬리에 추가하지 않고, 다른 공간에 저장한다.</p></li>
+<li><p>2와 3의 과정을 큐에 아무 것도 없을 때까지 반복한다.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">josephus_permutation</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="p">:</span> 
+    
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        
+    <span class="k">while</span> <span class="n">q</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span>
+            <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">())</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">())</span>
+    
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">())</span>
+        
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">josephus_permutation</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 6, 2, 7, 5, 1, 4]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">13.3. </span>덱<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>덱<font size="2">double-ended queue, deque</font>은 선형 자료형으로, 큐와는 달리 항목의 추가와 삭제가 머리와 꼬리 양쪽 끝 모두에서 처리된다. 이런 의미에서 덱은 스택과 큐의 기능을 함께 제공하며 어떻게 사용할 것인가는 사용자에 의해 결정된다.</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/hj617kim/core_pybook/master/images/ch09/deque01.png" style="width:500px;">
+</div>
+<p><strong>활용 예제</strong> : 편집기의 ‘undo’와 ‘redo’<br />
+문서 작성 중에 ‘undo’ 버튼을 누르면 마지막에 추가된 항목(머리 항목)이 삭제되는 동시에 꼬리 항목으로 추가된다. 이후 ‘redo’ 버튼이 눌리면 꼬리 항목이 삭제되어 다시 머리 항목으로 추가된다. 웹브라우저의 ‘back’과 ‘forward’ 버튼도 이와 유사하게 작동한다.</p>
+<div class="info admonition">
+<p class="admonition-title">참고</p>
+<p>파이썬에서 덱은 collections 라이브러리의 <code class="docutils literal notranslate"><span class="pre">deque</span></code> 클래스를 이용해 사용할 수 있다. 덱은 스택과 큐를 일반화한 것으로, 이를 이용하여 스택과 큐를 구현할 수 있다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">help</span><span class="p">(</span><span class="n">deque</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<section id="deque">
+<h3><span class="section-number">13.3.1. </span><code class="docutils literal notranslate"><span class="pre">Deque</span></code> 추상 자료형<a class="headerlink" href="#deque" title="Link to this heading">#</a></h3>
+<p>덱 추상 자료형을 구체적인 파이썬 자료구조<font size="2">data structure</font>로 구현하려면 갖추어야 하는 기본 기능은 다음과 같다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Deque()</span></code> : 비어 있는 덱 생성. 생성자의 역할.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_front(item)</span></code> : 머리에 새로운 항목 추가. 반환값 없음.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_rear(item)</span></code> : 꼬리에 새로운 항목 추가. 반환값 없음.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove_front()</span></code> : 머리 항목 삭제. 삭제된 항목 반환.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove_rear()</span></code> : 꼬리 항목 삭제. 삭제된 항목 반환.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_empty()</span></code> : 덱이 비었는지 여부 판단. 불리언 값 반환.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size()</span></code> : 항목 개수 반환.</p></li>
+</ul>
+<p>아래 표는 덱 생성과 함께 다양한 덱 관련 연산의 작동법을 소개한다. 항목들의 저장을 위해 리스트를 사용하며 머리는 리스트의 오른쪽 끝, 꼬리는 왼쪽 끝을 사용한다.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>덱 연산</p></th>
+<th class="head text-left"><p>덱 항목</p></th>
+<th class="head text-center"><p>반환값</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">Deque()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d.is_empty()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d.add_rear(2)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[2]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d.add_rear('Hello')</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">['Hello',</span> <span class="pre">2]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d.add_front(3.2)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">['Hello',</span> <span class="pre">2,</span> <span class="pre">3.2]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d.add_front(True)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">['Hello',</span> <span class="pre">2,</span> <span class="pre">3.2,</span> <span class="pre">True]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d.size()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">['Hello',</span> <span class="pre">2,</span> <span class="pre">3.2,</span> <span class="pre">True]</span></code></p></td>
+<td class="text-center"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d.is_empty()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">['Hello',</span> <span class="pre">2,</span> <span class="pre">3.2,</span> <span class="pre">True]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d.add_rear(5)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">'Hello',</span> <span class="pre">2,</span> <span class="pre">3.2,</span> <span class="pre">True]</span></code></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d.remove_rear()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">['Hello',</span> <span class="pre">2,</span> <span class="pre">3.2,</span> <span class="pre">True]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">d.remove_front()</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">['Hello',</span> <span class="pre">2,</span> <span class="pre">3.2]</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">13.3.2. </span>덱 자료구조 구현<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>리스트를 활용할 때 중요한 것은 머리와 꼬리를 어디로 설정하는가이다. 큐의 경우처럼 꼬리는 리스트의 시작, 머리는 리스트의 오른편 끝으로 정하며 이에 따라 항목 추가와 삭제 함수를 적절하게 구현한다.</p>
+<ul class="simple">
+<li><p>머리</p>
+<ul>
+<li><p>항목 추가 : 리스트의 <code class="docutils literal notranslate"><span class="pre">append(item)</span></code> 활용</p></li>
+<li><p>항목 삭제 : 리스트의 <code class="docutils literal notranslate"><span class="pre">pop()</span></code> 활용</p></li>
+</ul>
+</li>
+<li><p>꼬리</p>
+<ul>
+<li><p>항목 추가 : 리스트의 <code class="docutils literal notranslate"><span class="pre">insert(0,</span> <span class="pre">item)</span></code> 활용</p></li>
+<li><p>항목 삭제 : 리스트의 <code class="docutils literal notranslate"><span class="pre">pop(0)</span></code> 활용</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Deque</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;리스트를 활용한 덱 구현&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;새로운 덱 생성&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;덱 표기법: &lt;~[1, 2, 3]~&gt; 등등&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;~</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="si">}</span><span class="s2">~&gt;&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;비었는지 여부 확인&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_front</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;머리에 항목 추가&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_rear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;꼬리에 항목 추가&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_front</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;머리 항목 삭제&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_rear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;꼬리 항목 삭제&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;항목 개수 확인&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">Deque</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">is_empty</span><span class="p">())</span>
+<span class="n">d</span><span class="o">.</span><span class="n">add_rear</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">add_rear</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">add_front</span><span class="p">(</span><span class="mf">3.2</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">add_front</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+&lt;~[&#39;Hello&#39;, 2, 3.2, True]~&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">is_empty</span><span class="p">())</span>
+<span class="n">d</span><span class="o">.</span><span class="n">add_rear</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">remove_rear</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">remove_front</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+False
+5
+True
+&lt;~[&#39;Hello&#39;, 2, 3.2]~&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="proof example admonition" id="deque-example01">
+<p class="admonition-title"><span class="caption-number">Example 13.3 </span></p>
+<section class="example-content" id="proof-content">
+<p>‘racecar’, ‘토마토’, ‘stats’와 같이 앞뒤를 뒤집어도 똑같은 문자열을 회문<font size = "2">palindrome</font>이라고 한다. 덱을 활용하여 문자열이 주어질 때, 그 문자열이 회문이면 <code class="docutils literal notranslate"><span class="pre">Success</span></code>를, 아니면 <code class="docutils literal notranslate"><span class="pre">Fail</span></code>를 반환하는 <code class="docutils literal notranslate"><span class="pre">palindrome_checker()</span></code> 함수를 정의하여라.</p>
+</section>
+</div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">palindrome_checker</span><span class="p">(</span><span class="s1">&#39;racecar&#39;</span><span class="p">))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">palindrome_checker</span><span class="p">(</span><span class="s1">&#39;tomato&#39;</span><span class="p">))</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>덱 활용법은 다음과 같다.</p>
+<ul class="simple">
+<li><p>주어진 문자열을 덱에 추가한다.</p></li>
+<li><p>머리와 꼬리의 항목을 하나씩 꺼내 값을 비교하여, 다른 것이 있으면 <code class="docutils literal notranslate"><span class="pre">False</span></code>를 반환하고, 아니면 <code class="docutils literal notranslate"><span class="pre">True</span></code>를 반환한다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">palindrome_checker</span><span class="p">(</span><span class="n">a_string</span><span class="p">)</span> <span class="p">:</span>
+    
+    <span class="n">d</span> <span class="o">=</span> <span class="n">Deque</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">a_string</span> <span class="p">:</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">add_rear</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+        
+    <span class="k">while</span> <span class="n">d</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">:</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">remove_front</span><span class="p">()</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">remove_rear</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">first</span> <span class="o">!=</span> <span class="n">last</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">palindrome_checker</span><span class="p">(</span><span class="s1">&#39;racecar&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">palindrome_checker</span><span class="p">(</span><span class="s1">&#39;tomato&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">13.4. </span>연습문제<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<section id="id9">
+<h3><span class="section-number">13.4.1. </span>문제<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>함수나 연산 실행에 사용되는 괄호는 짝이 맞아야 한다. 즉, 여는 괄호와 닫는 괄호의 짝이 맞아야 한다. 파이썬의 경우 괄호가 맞지 않으면 구문 오류<code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>가 발생한다. 아래 괄호로 이루어진 문자열이 짝이 맞는 괄호들로 이루어졌는지 여부를 판단하는 함수<code class="docutils literal notranslate"><span class="pre">balance_checker()</span></code>를 구현하여라.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span></code>, <code class="docutils literal notranslate"><span class="pre">)</span></code> : 소괄호</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span></code>, <code class="docutils literal notranslate"><span class="pre">}</span></code> : 중괄호</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span></code>, <code class="docutils literal notranslate"><span class="pre">]</span></code> : 대괄호</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">balance_checker</span><span class="p">(</span><span class="s1">&#39;{{([][])}()}&#39;</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">balance_checker</span><span class="p">(</span><span class="s1">&#39;[[{{(())}}]]&#39;</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">balance_checker</span><span class="p">(</span><span class="s1">&#39;[][][]()</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">balance_checker</span><span class="p">(</span><span class="s1">&#39;([))&#39;</span><span class="p">))</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">balance_checker</span><span class="p">(</span><span class="s1">&#39;[{()]&#39;</span><span class="p">))</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3><span class="section-number">13.4.2. </span>문제<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>십진법은 우리가 일반적으로 사용하는 기수법<font size="2">numeral system</font>으로, 0,1,2,3,4,5,6,7,8,9라는 10개의 숫자를 가지고 수를 표현하며, 수의 자리가 하나씩 올라감에 따라 자릿값이 10배씩 커진다. 반면에 이진법은 0과 1, 두 개의 숫자를 가지고 수를 표현하며, 수의 자리가 하나씩 올라감에 따라 자릿값이 2배씩 커진다. 예를 들어, 십진법 정수 <span class="math notranslate nohighlight">\(125_{10}\)</span>를 이진법으로 표기하면 <span class="math notranslate nohighlight">\(1111101_{2}\)</span>이 된다.</p>
+<div class="math notranslate nohighlight">
+\[125_{10} = 1 \times 10^2 + 2 \times 10^1 + 5 \times 10^0 \]</div>
+<div class="math notranslate nohighlight">
+\[1111101_{2} = 1 \times 2^6 + 1 \times 2^5 + 1 \times 2^4 + 1 \times 2^3 + 1 \times 2^2 + 0 \times 2^1 + 1 \times 2^0\]</div>
+<p>십진법으로 표기된 정수를 이진법으로 변환하는 함수<code class="docutils literal notranslate"><span class="pre">base_converter()</span></code> 함수를 정의하여라.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">base_converter</span><span class="p">(</span><span class="mi">125</span><span class="p">))</span>
+<span class="go">1111101</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">base_converter</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="go">111</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">base_converter</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
+<span class="go">1011</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">도움말</p>
+<p>십진법으로 표기된 정수의 이진법 표기를 찾는 알고리즘은 아래와 같다.</p>
+<ul class="simple">
+<li><p>2로 나눈 후 나머지를 스택에 추가한다.</p></li>
+<li><p>2로 나눈 몫을 대상으로 위 과정을 반복한다.</p></li>
+<li><p>스택에 쌓인 값들을 거꾸로 읽는다. 즉, <code class="docutils literal notranslate"><span class="pre">pop()</span></code>을 연속적으로 활용한다.</p></li>
+</ul>
+</div>
+</section>
+<section id="id11">
+<h3><span class="section-number">13.4.3. </span>문제<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>회의 시간을 정하기 위해 팀원들에게 회의하기 어려운 시간을 구간으로 조사하였다. 그리고 겹치는 구간을 합해 회의 불가능한 시간을 정리하려고 한다. 이때, 13시부터 15시까지 회의가 어렵다면, 이를 <code class="docutils literal notranslate"><span class="pre">[13,</span> <span class="pre">15]</span></code>로 표현한다.</p>
+<p>예를 들어, 아래와 같다면, 회의 불가능한 시간은 9시부터 10시(<code class="docutils literal notranslate"><span class="pre">[9,</span> <span class="pre">10]</span></code>), 12시부터 15시(<code class="docutils literal notranslate"><span class="pre">[12,</span> <span class="pre">15]</span></code>)이다.</p>
+<ul class="simple">
+<li><p>A는 13시부터 15시까지 회의 불가능 - <code class="docutils literal notranslate"><span class="pre">[13,</span> <span class="pre">15]</span></code></p></li>
+<li><p>B는 9시부터 10시, 12시부터 14시 회의 불가능 - <code class="docutils literal notranslate"><span class="pre">[9,</span> <span class="pre">10]</span></code>, <code class="docutils literal notranslate"><span class="pre">[12,</span> <span class="pre">14]</span></code></p></li>
+</ul>
+<p>시간은 0~24사이(끝 값 포함)의 정수로 입력된다고 가정한다.</p>
+<p>여러 개의 길이가 2인 리스트를 인자로 받아, 각 구간을 합하여 겹치지 않는 구간을 만든 다음 반환하는 <code class="docutils literal notranslate"><span class="pre">merge_intervals()</span></code> 함수를 정의하여라.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">merge_intervals</span><span class="p">([</span><span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]))</span>
+<span class="go">[[9, 10], [12, 15]]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">merge_intervals</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">]))</span>
+<span class="go">[[9, 16]]</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">도움말</p>
+<ul class="simple">
+<li><p>시작 시간을 기준으로 오름차순으로 정렬한다.</p></li>
+<li><p>스택을 만든다.</p></li>
+<li><p>각 구간에 대해 스택이 비어있거나 스택의 탑에 있는 구간의 끝 시간이 그 구간의 시작 시간보다 작으면(즉, 두 구간이 겹치지 않는 경우), 그 구간을 스택에 넣는다.</p></li>
+<li><p>위에서 구간이 겹친다면, 스택의 탑에 있는 구간의 끝 시간을 업데이트하여 두 구간을 병합한다.</p></li>
+<li><p>스택에 있는 겹치지 않는 모든 구간을 반환한다.</p></li>
+</ul>
+</div>
+</section>
+<section id="id12">
+<h3><span class="section-number">13.4.4. </span>문제<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>매일의 주식 종가가 기록된 리스트를 입력받아서, 주식가격이 오르기 위해서는 며칠을 기다려야 하는지를 반환하는 함수 <code class="docutils literal notranslate"><span class="pre">closing_price()</span></code>를 정의하여라.</p>
+<p>예를 들어, 첫째 날의 종가는 100원이고 1일만 지나면 종가가 오른다. 둘째 날의 종가는 101원이고 4일이 지나야 종가가 오른다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;print(closing_price([100, 101, 95, 92, 90, 120]))</span>
+<span class="go">[1, 4, 3, 2, 1, 0]</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">도움말</p>
+<p>스택에 유용한 항목의 인덱스를 저장하는 방식으로 문제를 해결할 수 있다. 위의 예제의 경우, 아래와 같은 방식으로 해결할 수 있다.</p>
+<ol class="arabic simple">
+<li><p>스택을 만든다(s : <code class="docutils literal notranslate"><span class="pre">[]</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">closing_price()</span></code> 함수가 반환할 리스트를 정의한다. 이때, 리스트의 길이는 주식 종가가 기록된 리스트와 같고, 항목은 모두 <code class="docutils literal notranslate"><span class="pre">0</span></code>으로 한다.</p></li>
+<li><p>반복문을 사용하여, 인자로 들어온 리스트의 각 항목에 접근한다.</p></li>
+<li><p>현재 스택이 비어 있으므로, <code class="docutils literal notranslate"><span class="pre">100</span></code>의 인덱스 <code class="docutils literal notranslate"><span class="pre">0</span></code>을 스택에 추가한다(s : <code class="docutils literal notranslate"><span class="pre">[0]</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">101</span></code>은 <code class="docutils literal notranslate"><span class="pre">100</span></code>보다 크므로, 스택의 탑에 있는 값 <code class="docutils literal notranslate"><span class="pre">0</span></code>을 꺼낸 다음 <code class="docutils literal notranslate"><span class="pre">반환할</span> <span class="pre">리스트[0]</span> <span class="pre">=</span> <span class="pre">1(101의</span> <span class="pre">인덱스)</span> <span class="pre">-</span> <span class="pre">0</span></code>을 한다. 그리고 <code class="docutils literal notranslate"><span class="pre">101</span></code>의 인덱스 <code class="docutils literal notranslate"><span class="pre">1</span></code>를 스택에 추가한다(s : <code class="docutils literal notranslate"><span class="pre">[1]</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">95</span></code>는 <code class="docutils literal notranslate"><span class="pre">101</span></code>보다 작으므로, 스택에 추가한다(s : <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">92</span></code>는 <code class="docutils literal notranslate"><span class="pre">95</span></code>보다 작고, 101보다 작으므로, 스택에 추가한다(s : <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">90</span></code>는 <code class="docutils literal notranslate"><span class="pre">91</span></code>와 <code class="docutils literal notranslate"><span class="pre">95</span></code>보다 작고, 101보다도 작으므로, 스택에 추가한다(s : <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4]</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">120</span></code>은 <code class="docutils literal notranslate"><span class="pre">90</span></code>보다 크다. 스택의 탑에 있는 값 <code class="docutils literal notranslate"><span class="pre">4</span></code>를 꺼낸 다음 <code class="docutils literal notranslate"><span class="pre">반환할</span> <span class="pre">리스트[4]</span> <span class="pre">=</span> <span class="pre">5(120의</span> <span class="pre">인덱스)</span> <span class="pre">-</span> <span class="pre">4</span></code>를 한다. 그다음 스택의 탑에 있는 값 <code class="docutils literal notranslate"><span class="pre">3</span></code>을 꺼낸 다음 <code class="docutils literal notranslate"><span class="pre">반환할</span> <span class="pre">리스트[3]</span> <span class="pre">=</span> <span class="pre">5(120의</span> <span class="pre">인덱스)</span> <span class="pre">-</span> <span class="pre">3</span></code>을 한다. 다시, 그다음 스택의 탑에 있는 값 <code class="docutils literal notranslate"><span class="pre">2</span></code>을 꺼낸 다음 <code class="docutils literal notranslate"><span class="pre">반환할</span> <span class="pre">리스트[2]</span> <span class="pre">=</span> <span class="pre">5(120의</span> <span class="pre">인덱스)</span> <span class="pre">-</span> <span class="pre">2</span></code>를 한다. 스택에 아무 것도 없을 때까지 위 과정을 반복하고, 마지막에 리스트를 반환하면 된다.</p></li>
+</ol>
+</div>
+</section>
+<section id="id13">
+<h3><span class="section-number">13.4.5. </span>문제<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>문자 없애기 게임을 만들어보자. 게임은 다음과 같이 진행된다.</p>
+<ul class="simple">
+<li><p>컴퓨터는 <code class="docutils literal notranslate"><span class="pre">abcd</span></code> 중 중복을 허용하여 랜덤하게 3개의 문자를 말한다.</p></li>
+<li><p>사용자는 <code class="docutils literal notranslate"><span class="pre">abcd</span></code> 중 중복을 허용하여 3개의 문자를 입력한다.</p></li>
+<li><p>컴퓨터와 사용자가 입력한 문자열은 순서대로 이어 붙여진다. 그리고 같은 문자가 3번 반복되면 그 문자는 사라진다.</p></li>
+</ul>
+<p>위 과정을 반복하여, 사용자는 모든 문자를 없애야 한다.</p>
+<p>예를 들어, 게임 진행 과정은 아래와 같다. <code class="docutils literal notranslate"><span class="pre">coputer</span></code>가 랜덤하게 3개의 문자를 말하면, <code class="docutils literal notranslate"><span class="pre">user</span></code>가 3개의 문자를 입력한다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">computer</span> <span class="p">:</span> <span class="n">bdc</span>
+<span class="n">user</span> <span class="p">:</span> <span class="n">ccd</span>
+</pre></div>
+</div>
+<p>두 문자열을 이어 붙이면 <code class="docutils literal notranslate"><span class="pre">bdcccd</span></code> 이고 <code class="docutils literal notranslate"><span class="pre">c</span></code>가 3번 반복되어 <code class="docutils literal notranslate"><span class="pre">bdd</span></code>가 남는다. 그 다음은 <code class="docutils literal notranslate"><span class="pre">computer</span></code> 차례다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">computer</span> <span class="p">:</span> <span class="n">cac</span>
+</pre></div>
+</div>
+<p>문자열을 이어 붙이면 현재 문자열은 <code class="docutils literal notranslate"><span class="pre">bddcac</span></code>이다. 그 다음은 <code class="docutils literal notranslate"><span class="pre">user</span></code> 입력할 차례다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="p">:</span> <span class="n">cca</span>
+</pre></div>
+</div>
+<p>문자열을 이어 붙이면 <code class="docutils literal notranslate"><span class="pre">bddcaccca</span></code> 이고 <code class="docutils literal notranslate"><span class="pre">c</span></code>가 3번 반복되어 <code class="docutils literal notranslate"><span class="pre">bddcaa</span></code>가 남는다. 그 다음 <code class="docutils literal notranslate"><span class="pre">computer</span></code> 차례다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">computer</span> <span class="p">:</span> <span class="n">acc</span>
+</pre></div>
+</div>
+<p>그러면 <code class="docutils literal notranslate"><span class="pre">bddcaaacc</span></code>가 된다. <code class="docutils literal notranslate"><span class="pre">a</span></code>가 3번 반복되어 <code class="docutils literal notranslate"><span class="pre">bddccc</span></code>가 된다. 그런데 이때도 <code class="docutils literal notranslate"><span class="pre">c</span></code>가 3번 반복되어 사라진다. 그래서 <code class="docutils literal notranslate"><span class="pre">bdd</span></code>가 남는다.</p>
+<p>이제 <code class="docutils literal notranslate"><span class="pre">user</span></code>가 <code class="docutils literal notranslate"><span class="pre">dbb</span></code>를 입력하면, 모든 문자가 사라지고 게임이 끝난다.</p>
+<p>필요하면, <code class="docutils literal notranslate"><span class="pre">random</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">choices()</span></code> 함수를 사용한다. <code class="docutils literal notranslate"><span class="pre">choices(population,</span> <span class="pre">k</span> <span class="pre">=</span> <span class="pre">1)</span></code>는 <code class="docutils literal notranslate"><span class="pre">population</span></code>에서 중복을 허용하면서 선택한 <code class="docutils literal notranslate"><span class="pre">k</span></code> 크기의 요소를 가진 리스트를 반환한다.</p>
+<p>게임을 구현할 때는 사용자에게 문자를 입력 받기 전 현재 남아 있는 문자를 보여줘야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;c&#39;, &#39;c&#39;, &#39;c&#39;]
+[&#39;c&#39;, &#39;a&#39;, &#39;c&#39;]
+[&#39;a&#39;, &#39;a&#39;, &#39;b&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id14">
+<h3><span class="section-number">13.4.6. </span>문제<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>자연수 n를 입력받아, 1에서 n까지의 정수를 이진법으로 표기한 값들의 리스트를 반환하는 함수<code class="docutils literal notranslate"><span class="pre">generate_binary_number()</span></code>를 정의하여라.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">generate_binary_number</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">[1, 10]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">generate_binary_number</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="go">[1, 10, 11, 100, 101, 110, 111]</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">도움말</p>
+<p>큐에 이진수를 추가하는 방식으로 문제를 해결할 수 있다.</p>
+<ol class="arabic simple">
+<li><p>큐를 만든다.</p></li>
+<li><p>큐에 ‘1’를 추가한다.</p></li>
+<li><p>큐의 머리에 있는 값(<code class="docutils literal notranslate"><span class="pre">s1</span></code>)을 꺼내 반환할 리스트에 담는다. 그리고 <code class="docutils literal notranslate"><span class="pre">s1</span></code>에 <code class="docutils literal notranslate"><span class="pre">'0'</span></code>과 <code class="docutils literal notranslate"><span class="pre">'1'</span></code>를 더하는 방식으로 다음 이진수를 만들어 큐에 추가한다.</p></li>
+<li><p>3의 과정을 원하는 만큼 반복한다.</p></li>
+</ol>
+</div>
+</section>
+<section id="id15">
+<h3><span class="section-number">13.4.7. </span>문제<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>n명이 동그랗게 둘러앉아 임의의 한 사람부터 순서를 세어 k번째 사람을 제외하는 게임을 아무도 남지 않을 때까지 계속한다. 단, t명이 제외될 때마다 사람을 세는 방향을 변경한다. 자연수 n, k, t를 입력받아 제외되는 사람의 순서를 반환하는 <code class="docutils literal notranslate"><span class="pre">josephus_permutation()</span></code> 함수를 정의하여라. 단, t, k &lt; n라고 가정한다.</p>
+<p>예를 들어, n = 7, k = 3, t = 2라면 3 -&gt; 6 -&gt; 2 -&gt; 5 -&gt; 4 -&gt; 7 -&gt; 1 순서로 제외한다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">josephus_permutation</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">[3, 6, 2, 5, 4, 7, 1]</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">도움말</p>
+<p>예를 들어, <code class="docutils literal notranslate"><span class="pre">t</span></code>가 2라면, 2사람을 제외하고 사람을 세는 방향을 변경해야 한다. 제외되는 사람을 각각 0, 1, 2, 3, 4, 5, 6이라고 해보자. 그러면 아래와 같은 방식으로 제외한다.</p>
+<ul class="simple">
+<li><p>0, 1 - 시계 방향</p></li>
+<li><p>2, 3 - 반시계 방향</p></li>
+<li><p>4, 5 - 시계 방향</p></li>
+<li><p>6 - 반시계 방향</p></li>
+</ul>
+<p>이때, 0, 1, 4, 5는 2로 나눴을 때의 몫이 각각 0, 0, 2, 2이다. 그리고 2, 3, 6은 2로 나눴을 때의 몫이 1, 1, 3이다.<br />
+즉, <code class="docutils literal notranslate"><span class="pre">i</span></code>는 0부터 시작하여 사람을 제외할 떄마다 1씩 증가하게 두고, <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">//</span> <span class="pre">t</span></code>의 값이 짝수냐 홀수냐에 따라 방향을 변경하면 된다.</p>
+</div>
+</section>
+<section id="id16">
+<h3><span class="section-number">13.4.8. </span>문제<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<p>여러 명이 함께 사용하는 실험실 공용 프린터 한 대가 무작위적으로 입력되는 프린팅 작업을 수행할 때 벌어지는 일을 모의실험해보자. 모의실험의 목적은 사용자가 프린팅 명령을 내리고 과제가 출력되기 시작할 때까지 평균적으로 걸리는 시간을 계산하는 일이다.</p>
+<p><strong>필요한 객체</strong><br />
+다음 세 개의 객체를 사용한다.</p>
+<ul class="simple">
+<li><p>프린트 객체 : <code class="docutils literal notranslate"><span class="pre">Printer</span></code> 클래스의 인스턴스. 프린터의 기본 기능 제공</p>
+<ul>
+<li><p>프린팅 과제 내용 : 분당 출력 페이지 수</p></li>
+<li><p>프린터 상태 : busy 또는 대기</p></li>
+<li><p>프린팅 과제 수행</p></li>
+<li><p>프린팅 과제별 수행 시간 측정</p></li>
+</ul>
+</li>
+<li><p>프린팅 과제 객체 : <code class="docutils literal notranslate"><span class="pre">Task</span></code> 클래스의 인스턴스. 실행할 프린팅 과제 정보 저장</p>
+<ul>
+<li><p>출력 대상 페이지 수</p></li>
+<li><p>과제 생성 시간</p></li>
+<li><p>출력 대기 시간 : 생성부터 프린터 출력 시작까지 대기시간</p></li>
+</ul>
+</li>
+<li><p>프린팅 큐 객체 : <code class="docutils literal notranslate"><span class="pre">Queue</span></code> 클래스의 인스턴스</p>
+<ul>
+<li><p>프린팅 과제 대기 목록</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>모의실험에 대한 추가 전제 사항</strong></p>
+<ul class="simple">
+<li><p>사람들이 무작위적으로 시간당 20건의 프린팅 과제 출력 실행</p></li>
+<li><p>하나의 프린팅 과제는 최대 20쪽까지 출력</p></li>
+</ul>
+<div class="info admonition">
+<p class="admonition-title">180분의 1의 확률</p>
+<p>위 모의실험의 전제조건은 확률적으로 180초에 한 번 프린팅 과제가 생성된다는 것을 의미한다. 매 초마다 1/180 확률로 프린팅 과제가 생성되는 것과 생성된 과제가 1에서 20쪽 사이의 임의의 쪽 수를 출력해야 하는 것을 구현하는 데에는 지정된 구간에서 임의의 정수 하나를 선택하는 <code class="docutils literal notranslate"><span class="pre">random</span></code>모듈의 <code class="docutils literal notranslate"><span class="pre">randrange()</span></code> 함수를 이용한다. 예를 들어, 1에서 180까지의 정수 중에 무작위로 5개의 값을 생성하려면 다음과 같이 실행한다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="go">        print(random.randrange(1,181))</span>
+</pre></div>
+</div>
+<p>이 함수를 매초 실행하여 생성된 값이 180인 경우에만 프린팅 과제를 생성하도록 하면 초당 180분의 1로 어떤 사건이 발생하는 것을 모의실험할 수 있다. 초당 180분의 1의 확률로 프린팅 과제를 생성할지 여부를 판단하려면 아래 함수를 초당 한 번 실행하면 된다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">new_print_task</span><span class="p">():</span>
+<span class="go">        num = random.randrange(1, 181)</span>
+
+<span class="go">        return num == 180</span>
+</pre></div>
+</div>
+<p>위 함수는 1에서 180 사이에서 임의로 선택된 값이 180인 경우 <code class="docutils literal notranslate"><span class="pre">True</span></code>를 반환한다.</p>
+</div>
+<p><strong>모의실험 단계</strong><br />
+모의실험은 아래 단계들로 이루어진다.</p>
+<ol class="arabic simple">
+<li><p>프린팅 큐 생성: 비어있는 상태.</p></li>
+<li><p>모든 프린팅 과제의 대기시간을 담아둘 빈 리스트 생성. 과제별 평균 대기시간 측정 용도.</p></li>
+<li><p>매 초당 아래 과제 수행</p>
+<ul class="simple">
+<li><p>초당 180분의 1의 확률로 프린팅 과제 생성</p>
+<ul>
+<li><p>생성된 시간 저장. 나중에 프린터가 실행될 때의 시간을 확인하여 대기시간을 측정할 수 있도록 함.</p></li>
+<li><p>프린팅 과제 생성 후 바로 프린팅 큐에 추가</p></li>
+</ul>
+</li>
+<li><p>프린터가 대기 상태이고 프린팅 큐에 과제가 남아 있으면 아래 과제 수행</p>
+<ul>
+<li><p>프린팅 큐의 헤드를 삭제하고 수행할 과제로 지정</p></li>
+<li><p>해당 과제의 대기 시간 계산(현재 시간과 과제 생성시간의 차이) 후에 모든 과제의 대시기간 리스트에 추가</p></li>
+<li><p>과제 출력 페이지 확인 후 출력에 필요한 시간 계산. 해당 시간 동안 프린터 상태가 busy로 표시되어 다음 프린팅 과제가 기다리게 됨.</p></li>
+<li><p>해당 프린팅 과제가 완수되면 대기 상태로 전환</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>모든 프린팅 과제 수행 후 과제별 평균 대기시간 계산</p></li>
+</ol>
+<p>1단계) <code class="docutils literal notranslate"><span class="pre">Printer</span></code>클래스를 구현하여라. <code class="docutils literal notranslate"><span class="pre">Printer</span></code> 클래스가 가져야 하는 속성과 메서드는 다음과 같다.</p>
+<ul class="simple">
+<li><p>분당 출력 페이지 수  : <code class="docutils literal notranslate"><span class="pre">self.page_rate</span></code></p></li>
+<li><p>수행 대상 프린팅 과제 : <code class="docutils literal notranslate"><span class="pre">self.current_task</span></code></p></li>
+<li><p>수행 대상 프린팅 과제 수행 시간 : <code class="docutils literal notranslate"><span class="pre">self.time_remaining</span></code></p></li>
+<li><p>수행 중인 프린팅 과제 남은 수행 시간동안 busy 상태 유지 : <code class="docutils literal notranslate"><span class="pre">tick()</span></code> 메서드</p></li>
+<li><p>프린터 상태 : <code class="docutils literal notranslate"><span class="pre">busy()</span></code> 메서드</p></li>
+<li><p>다음 프린팅 과제 불러오기 : <code class="docutils literal notranslate"><span class="pre">start_next()</span></code> 메서드</p></li>
+</ul>
+<p>2단계) <code class="docutils literal notranslate"><span class="pre">Task</span></code> 클래스를 구현하여라. <code class="docutils literal notranslate"><span class="pre">Task</span></code> 클래스가 가져야 하는 속성과 메서드는 다음과 같다.</p>
+<ul class="simple">
+<li><p>프린팅 과제 생성 시간 : <code class="docutils literal notranslate"><span class="pre">self.timestamp</span></code></p></li>
+<li><p>프린팅 대상 페이지 수 : 1 ~ 20 사이의 무작위 수 <code class="docutils literal notranslate"><span class="pre">self.pages</span></code></p></li>
+<li><p>프린팅 과제 생성 시간 확인 : <code class="docutils literal notranslate"><span class="pre">get_stamp()</span></code> 메서드</p></li>
+<li><p>프린팅 대상 페이지 수 확인 : <code class="docutils literal notranslate"><span class="pre">get_pages()</span></code> 메서드</p></li>
+<li><p>과제 생성 후 프린팅 시작까지 대기 시간 : <code class="docutils literal notranslate"><span class="pre">wait_time()</span></code> 메서드</p></li>
+</ul>
+<p>3단계) 모의실험 구현<br />
+지정된 시간동안 프린팅 작업을 수행할 때 프린팅 과제당 평균 대기 시간을 계산하는 <code class="docutils literal notranslate"><span class="pre">simulation(num_second,</span> <span class="pre">pages_per_minutes)</span></code> 함수를 정의하여라.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">num_second</span></code> : 프린터 작동 시간</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pages_per_minutes</span></code> : 분당 출력 페이지 수</p></li>
+</ul>
+<p><strong>주의사항</strong> : 여기서는 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문이 초당 1회 실행된다고 가정한다. 따라서 아래 함수들은 초당 1회 실행되는 것을 잘 구현한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">new_print_task()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tick()</span></code></p></li>
+</ul>
+<p>아래 코드는 분당 5장을 출력하는 프린터를 1시간동안 돌리는 모의실험을 100번 실행할 때의 결과를 보여준다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">average_wait_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="go">        average_wait_list.append(simulation(3600, 5))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;평균 대기시간: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">average_wait_list</span><span class="p">)</span><span class="si">:</span><span class="s2">6.2f</span><span class="si">}</span><span class="s2"> 초&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id17">
+<h3><span class="section-number">13.4.9. </span>문제<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<p>어느 카페의 바리스타 한명이 무작위적으로 입력되는 주문 작업을 수행할 때 벌어지는 일을 모의실험하여라. 모의실험의 목적은 손님이 주문을 하고 주문한 음료를 받을 때까지 평균적으로 걸리는 시간을 계산하는 일이다.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ch12.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>기초 V(클래스)</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.1. 스택</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack">13.1.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> 추상 자료형</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">13.1.2. 스택 자료구조 구현</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">13.2. 큐</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue">13.2.1. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> 추상 자료형</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">13.2.2. 큐 자료구조 구현</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">13.3. 덱</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deque">13.3.1. <code class="docutils literal notranslate"><span class="pre">Deque</span></code> 추상 자료형</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.3.2. 덱 자료구조 구현</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">13.4. 연습문제</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">13.4.1. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">13.4.2. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">13.4.3. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">13.4.4. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">13.4.5. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">13.4.6. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">13.4.7. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">13.4.8. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">13.4.9. 문제</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By HJ & codingalzi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
