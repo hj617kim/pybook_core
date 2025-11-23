@@ -1,0 +1,63 @@
+Traceback (most recent call last):
+  File "/home/hj617kim/jbook-env/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hj617kim/jbook-env/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/hj617kim/jbook-env/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hj617kim/jbook-env/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/hj617kim/jbook-env/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/hj617kim/jbook-env/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/hj617kim/jbook-env/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import folium
+
+site = {'인천' : [37.4692, 126.451], '함부르크' : [53.5506, 9.99333], '이스탄불' : [41.0122, 28.976], '뮌헨' : [48.14, 11.58], '헬싱키' : [60.1699, 24.9384], '암스테르담' : [52.3738, 4.89093], '프랑크푸르트' : [50.1167, 8.68333]}
+travel_time = {'인천' : [['이스탄불', 685], ['뮌헨', 790], ['헬싱키', 825], ['암스테르담', 815], ['프랑크푸르트', 830]], 
+               '함부르크': [['인천', 930], ['프랑크푸르트', 70], ['암스테르담', 70]], 
+               '이스탄불' : [['함부르크', 210], ['뮌헨', 140], ['헬싱키', 225], ['암스테르담', 200], ['인천', 620]], 
+               '뮌헨' : [['함부르크', 65], ['이스탄불', 150], ['프랑크푸르트', 60]], 
+               '헬싱키' : [['함부르크', 120], ['암스테르담', 155]], 
+               '암스테르담': [['함부르크', 65], ['이스탄불', 210]], 
+               '프랑크푸르트': [['함부르크', 65], ['이스탄불', 195], ['인천', 690]]}
+
+m = folium.Map([46, 70], zoom_start = 3)
+
+for i in site :
+    folium.Marker(site[i], tooltip= i).add_to(m)
+
+for i in travel_time :
+    for j in travel_time[i] :
+        folium.PolyLine(locations = [site[i], site[j[0]]]).add_to(m)
+m
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mModuleNotFoundError[39m                       Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[7][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mfolium[39;00m
+[32m      3[39m site = {[33m'[39m[33m인천[39m[33m'[39m : [[32m37.4692[39m, [32m126.451[39m], [33m'[39m[33m함부르크[39m[33m'[39m : [[32m53.5506[39m, [32m9.99333[39m], [33m'[39m[33m이스탄불[39m[33m'[39m : [[32m41.0122[39m, [32m28.976[39m], [33m'[39m[33m뮌헨[39m[33m'[39m : [[32m48.14[39m, [32m11.58[39m], [33m'[39m[33m헬싱키[39m[33m'[39m : [[32m60.1699[39m, [32m24.9384[39m], [33m'[39m[33m암스테르담[39m[33m'[39m : [[32m52.3738[39m, [32m4.89093[39m], [33m'[39m[33m프랑크푸르트[39m[33m'[39m : [[32m50.1167[39m, [32m8.68333[39m]}
+[32m      4[39m travel_time = {[33m'[39m[33m인천[39m[33m'[39m : [[[33m'[39m[33m이스탄불[39m[33m'[39m, [32m685[39m], [[33m'[39m[33m뮌헨[39m[33m'[39m, [32m790[39m], [[33m'[39m[33m헬싱키[39m[33m'[39m, [32m825[39m], [[33m'[39m[33m암스테르담[39m[33m'[39m, [32m815[39m], [[33m'[39m[33m프랑크푸르트[39m[33m'[39m, [32m830[39m]], 
+[32m      5[39m                [33m'[39m[33m함부르크[39m[33m'[39m: [[[33m'[39m[33m인천[39m[33m'[39m, [32m930[39m], [[33m'[39m[33m프랑크푸르트[39m[33m'[39m, [32m70[39m], [[33m'[39m[33m암스테르담[39m[33m'[39m, [32m70[39m]], 
+[32m      6[39m                [33m'[39m[33m이스탄불[39m[33m'[39m : [[[33m'[39m[33m함부르크[39m[33m'[39m, [32m210[39m], [[33m'[39m[33m뮌헨[39m[33m'[39m, [32m140[39m], [[33m'[39m[33m헬싱키[39m[33m'[39m, [32m225[39m], [[33m'[39m[33m암스테르담[39m[33m'[39m, [32m200[39m], [[33m'[39m[33m인천[39m[33m'[39m, [32m620[39m]], 
+[32m   (...)[39m[32m      9[39m                [33m'[39m[33m암스테르담[39m[33m'[39m: [[[33m'[39m[33m함부르크[39m[33m'[39m, [32m65[39m], [[33m'[39m[33m이스탄불[39m[33m'[39m, [32m210[39m]], 
+[32m     10[39m                [33m'[39m[33m프랑크푸르트[39m[33m'[39m: [[[33m'[39m[33m함부르크[39m[33m'[39m, [32m65[39m], [[33m'[39m[33m이스탄불[39m[33m'[39m, [32m195[39m], [[33m'[39m[33m인천[39m[33m'[39m, [32m690[39m]]}
+
+[31mModuleNotFoundError[39m: No module named 'folium'
+
