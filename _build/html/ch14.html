@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -390,6 +390,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">14.5. 연습 문제</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">14.5.1. 문제</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">14.5.2. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.5.3. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">14.5.4. 문제</a></li>
 </ul>
 </li>
 </ul>
@@ -803,21 +805,364 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">site</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;인천&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">37.4692</span><span class="p">,</span> <span class="mf">126.451</span><span class="p">],</span> <span class="s1">&#39;함부르크&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">53.5506</span><span class="p">,</span> <span class="mf">9.99333</span><span class="p">],</span> <span class="s1">&#39;이스탄불&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">41.0122</span><span class="p">,</span> <span class="mf">28.976</span><span class="p">],</span> <span class="s1">&#39;뮌헨&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">48.14</span><span class="p">,</span> <span class="mf">11.58</span><span class="p">],</span> <span class="s1">&#39;헬싱키&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">60.1699</span><span class="p">,</span> <span class="mf">24.9384</span><span class="p">],</span> <span class="s1">&#39;암스테르담&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">52.3738</span><span class="p">,</span> <span class="mf">4.89093</span><span class="p">],</span> <span class="s1">&#39;프랑크푸르트&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">50.1167</span><span class="p">,</span> <span class="mf">8.68333</span><span class="p">]}</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">travel_time</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;인천&#39;</span> <span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;이스탄불&#39;</span><span class="p">,</span> <span class="mi">685</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;뮌헨&#39;</span><span class="p">,</span> <span class="mi">790</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;헬싱키&#39;</span><span class="p">,</span> <span class="mi">825</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;암스테르담&#39;</span><span class="p">,</span> <span class="mi">815</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;프랑크푸르트&#39;</span><span class="p">,</span> <span class="mi">830</span><span class="p">]],</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span>                <span class="s1">&#39;함부르크&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;인천&#39;</span><span class="p">,</span> <span class="mi">930</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;프랑크푸르트&#39;</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;암스테르담&#39;</span><span class="p">,</span> <span class="mi">70</span><span class="p">]],</span> 
-<span class="g g-Whitespace">      </span><span class="mi">6</span>                <span class="s1">&#39;이스탄불&#39;</span> <span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;함부르크&#39;</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;뮌헨&#39;</span><span class="p">,</span> <span class="mi">140</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;헬싱키&#39;</span><span class="p">,</span> <span class="mi">225</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;암스테르담&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;인천&#39;</span><span class="p">,</span> <span class="mi">620</span><span class="p">]],</span> 
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>      <span class="mi">9</span>                <span class="s1">&#39;암스테르담&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;함부르크&#39;</span><span class="p">,</span> <span class="mi">65</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;이스탄불&#39;</span><span class="p">,</span> <span class="mi">210</span><span class="p">]],</span> 
-<span class="g g-Whitespace">     </span><span class="mi">10</span>                <span class="s1">&#39;프랑크푸르트&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s1">&#39;함부르크&#39;</span><span class="p">,</span> <span class="mi">65</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;이스탄불&#39;</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;인천&#39;</span><span class="p">,</span> <span class="mi">690</span><span class="p">]]}</span>
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_9d852d9abab7c8ef66e1f6bdd326de22 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;folium&#39;
-</pre></div>
-</div>
-</div>
+            &lt;style&gt;html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            &lt;/style&gt;
+
+            &lt;style&gt;#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            &lt;/style&gt;
+
+            &lt;script&gt;
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            &lt;/script&gt;
+
+        
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_9d852d9abab7c8ef66e1f6bdd326de22&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_9d852d9abab7c8ef66e1f6bdd326de22 = L.map(
+                &quot;map_9d852d9abab7c8ef66e1f6bdd326de22&quot;,
+                {
+                    center: [46.0, 70.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  &quot;zoom&quot;: 3,
+  &quot;zoomControl&quot;: true,
+  &quot;preferCanvas&quot;: false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e79b61ef8e75341046eeb1e49edaa55f = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {
+  &quot;minZoom&quot;: 0,
+  &quot;maxZoom&quot;: 19,
+  &quot;maxNativeZoom&quot;: 19,
+  &quot;noWrap&quot;: false,
+  &quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;,
+  &quot;subdomains&quot;: &quot;abc&quot;,
+  &quot;detectRetina&quot;: false,
+  &quot;tms&quot;: false,
+  &quot;opacity&quot;: 1,
+}
+
+            );
+        
+    
+            tile_layer_e79b61ef8e75341046eeb1e49edaa55f.addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var marker_d34a74ee4cd2840f4725dd383244dd4b = L.marker(
+                [37.4692, 126.451],
+                {
+}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            marker_d34a74ee4cd2840f4725dd383244dd4b.bindTooltip(
+                `&lt;div&gt;
+                     인천
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var marker_81a375fca9b13a36e77a9c48a7989784 = L.marker(
+                [53.5506, 9.99333],
+                {
+}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            marker_81a375fca9b13a36e77a9c48a7989784.bindTooltip(
+                `&lt;div&gt;
+                     함부르크
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var marker_f2b44b65bcb621e12bc2a6a089915e5c = L.marker(
+                [41.0122, 28.976],
+                {
+}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            marker_f2b44b65bcb621e12bc2a6a089915e5c.bindTooltip(
+                `&lt;div&gt;
+                     이스탄불
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var marker_bff49099ae96906c205282912fbaee81 = L.marker(
+                [48.14, 11.58],
+                {
+}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            marker_bff49099ae96906c205282912fbaee81.bindTooltip(
+                `&lt;div&gt;
+                     뮌헨
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var marker_e58ff068c56fc37ee5d9dd0cf9b219be = L.marker(
+                [60.1699, 24.9384],
+                {
+}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            marker_e58ff068c56fc37ee5d9dd0cf9b219be.bindTooltip(
+                `&lt;div&gt;
+                     헬싱키
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var marker_ccbea916a1d53fd02019bdc9ea28e2dd = L.marker(
+                [52.3738, 4.89093],
+                {
+}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            marker_ccbea916a1d53fd02019bdc9ea28e2dd.bindTooltip(
+                `&lt;div&gt;
+                     암스테르담
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var marker_e1505cdade3aac9132e0c8d8e86af7aa = L.marker(
+                [50.1167, 8.68333],
+                {
+}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            marker_e1505cdade3aac9132e0c8d8e86af7aa.bindTooltip(
+                `&lt;div&gt;
+                     프랑크푸르트
+                 &lt;/div&gt;`,
+                {
+  &quot;sticky&quot;: true,
+}
+            );
+        
+    
+            var poly_line_c2d210f7d3c1b8989df443f264df0b28 = L.polyline(
+                [[37.4692, 126.451], [41.0122, 28.976]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_7c622210e79b2bc36a5f5b0aebd58600 = L.polyline(
+                [[37.4692, 126.451], [48.14, 11.58]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_c9371e8851d0e1a371b7e8fbb5cf4d16 = L.polyline(
+                [[37.4692, 126.451], [60.1699, 24.9384]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_e3306c89bfbe5ee185f13dd4d62805eb = L.polyline(
+                [[37.4692, 126.451], [52.3738, 4.89093]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_0b67dd5f19f964ffac35d2cefb4809b8 = L.polyline(
+                [[37.4692, 126.451], [50.1167, 8.68333]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_e1965c9e65a108e8b941a88055635f79 = L.polyline(
+                [[53.5506, 9.99333], [37.4692, 126.451]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_d388838837795283e52981234db358c4 = L.polyline(
+                [[53.5506, 9.99333], [50.1167, 8.68333]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_d8a3eb226102e977a00a64e7403fbcb8 = L.polyline(
+                [[53.5506, 9.99333], [52.3738, 4.89093]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_58bacc7cd8e83313b95f636a573fa11e = L.polyline(
+                [[41.0122, 28.976], [53.5506, 9.99333]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_43b591cbd53a77db9947304943586043 = L.polyline(
+                [[41.0122, 28.976], [48.14, 11.58]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_9c2b2a9af444aa55f312041ad36b03cb = L.polyline(
+                [[41.0122, 28.976], [60.1699, 24.9384]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_3617c3eacd6c0b2fb2ba08c99dbe8aab = L.polyline(
+                [[41.0122, 28.976], [52.3738, 4.89093]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_09868d854171b5871b1fe33a9e17388d = L.polyline(
+                [[41.0122, 28.976], [37.4692, 126.451]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_a5c1df1e630720976d2926138068c7e4 = L.polyline(
+                [[48.14, 11.58], [53.5506, 9.99333]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_9f8a8269f498769e58983bf8646d1a4c = L.polyline(
+                [[48.14, 11.58], [41.0122, 28.976]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_0637ac8825df8cc6e0fd3519b0aa9810 = L.polyline(
+                [[48.14, 11.58], [50.1167, 8.68333]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_53a5e08ce70f334a89b2d0858094dffa = L.polyline(
+                [[60.1699, 24.9384], [53.5506, 9.99333]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_d0267444c03224579c82f757827144af = L.polyline(
+                [[60.1699, 24.9384], [52.3738, 4.89093]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_f5cfd8ab8a3f99ed0a4f4374c518bf45 = L.polyline(
+                [[52.3738, 4.89093], [53.5506, 9.99333]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_2be69452d84402c435faff3146560bd3 = L.polyline(
+                [[52.3738, 4.89093], [41.0122, 28.976]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_7ba8092872ce2f0d95f728ff00db41a9 = L.polyline(
+                [[50.1167, 8.68333], [53.5506, 9.99333]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_2c0b642169eab95348e98487979a7e74 = L.polyline(
+                [[50.1167, 8.68333], [41.0122, 28.976]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+    
+            var poly_line_ba4cb46a43accb22a44ade924cf460a7 = L.polyline(
+                [[50.1167, 8.68333], [37.4692, 126.451]],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: false, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;noClip&quot;: false, &quot;opacity&quot;: 1.0, &quot;smoothFactor&quot;: 1.0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_9d852d9abab7c8ef66e1f6bdd326de22);
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
 </div>
 <div class="info admonition">
 <p class="admonition-title">replit에서 <code class="docutils literal notranslate"><span class="pre">folium</span></code> 모듈의 지도</p>
@@ -854,6 +1199,122 @@ document.write(`
 을 먼저 꺼내는 데, 우선순위 큐에 항목을 추가할 때는 put() 메서드를, 항목을 꺼낼 때는 get() 메서드를 이용
 한다.
 [참고] math 모듈의 inf는 양의 무한대를 나타낸다.</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">14.5.3. </span>문제<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>다음은 3 * 3 크기의 미로이다. 이때 <code class="docutils literal notranslate"><span class="pre">0</span></code>은 이동할 수 있는 칸, <code class="docutils literal notranslate"><span class="pre">1</span></code>은 벽을 의미한다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="n">G</span>
+</pre></div>
+</div>
+<p>여기서 <code class="docutils literal notranslate"><span class="pre">S</span></code>는 시작점, <code class="docutils literal notranslate"><span class="pre">G</span></code>는 도착점이며, 상하좌우로만 이동할 수 있고 대각선 이동은 허용되지 않는다.</p>
+<p>미로의 각 위치를 다음과 같이 노드 번호로 변환한다고 하자.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span>
+<span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span>
+<span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>참고로 노드 4는 벽이므로 이동할 수 없다.</p>
+<p>너비 우선 탐색(BFS)의 방식으로 노드 0에서 노드 8까지의 최소 이동 칸 수를 구하시오.
+BFS는</p>
+<ul class="simple">
+<li><p>현재 칸에서 갈 수 있는 모든 이웃 칸을 먼저 큐에 넣고,</p></li>
+<li><p>큐에서 꺼내는 순서대로 다음 이웃을 확장하는 방식이다.</p></li>
+</ul>
+<p>이 과정을 적용하면 탐색 순서는 다음과 같다.
+노드 0 -&gt; 1 -&gt; 3 -&gt; 2 -&gt; 6 -&gt; 5 -&gt; 7 -&gt; 8</p>
+<p>그 결과, S에서 G까지의 최단 이동 칸 수는 4칸이며, 가능한 예시는 다음과 같다.</p>
+<ul class="simple">
+<li><p>노드 0 -&gt; 1 -&gt; 2 -&gt; 5 -&gt; 8</p></li>
+<li><p>노드 0 -&gt; 3 -&gt; 6 -&gt; 7 -&gt; 8</p></li>
+</ul>
+<p>다음은 위의 알고리즘에 대한 수도코드이다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+    <span class="c1">#1. 모든 노드의 거리를 -1로 초기화</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">every</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="mi">0</span>
+
+    <span class="c1">#2. 큐를 만들고 시작 노드를 넣는다. 이전에 정의한 Queue 클래스 이용!</span>
+    <span class="n">q</span> <span class="o">&lt;-</span> <span class="n">empty</span> <span class="n">queue</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+
+    <span class="c1">#3. 큐가 빌 때까지 반복</span>
+    <span class="k">while</span> <span class="n">q</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">empty</span><span class="p">:</span>
+        <span class="n">current</span> <span class="o">&lt;-</span> <span class="n">q</span><span class="o">.</span><span class="n">pop_front</span><span class="p">()</span>
+
+        <span class="c1">#4. current의 모든 인접 노드를 확인</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">current</span><span class="p">]:</span>
+            <span class="c1"># 아직 방문하지 않은 노드라면</span>
+            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># 거리 갱신(현재 거리 + 1)</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">d</span><span class="p">[</span><span class="n">current</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+                <span class="c1"># 큐에 넣어서 다음 단계에서 탐색</span>
+                <span class="n">q</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code>는 해당 노드까지 몇 칸 만에 도착했는지 기록하는 표이다.</p></li>
+<li><p>큐에는 앞으로 방문할 예정인 노드가 들어간다.</p></li>
+<li><p>인접리스트 <code class="docutils literal notranslate"><span class="pre">graph[node]</span></code>는 <code class="docutils literal notranslate"><span class="pre">node</span></code>와 직접 연결된 이웃 노드들의 목록이다.</p></li>
+<li><p>BFS는 큐에서 꺼낸 노드의 이웃들을 차례로 방문하며 거리 값을 채운다.</p></li>
+<li><p>아직 방문하지 않은 노드를 <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">-1</span></code>로 구분한다.</p></li>
+<li><p>주어진 미로는 다음과 같이 그래프로 표현할 수 있다.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="c1"># 4는 벽</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>수도코드를 참고하여. 너비 우선 탐색(BFS)의 방식으로 시작 노드에서 다른 노드까지 몇 칸 만에 도착했는지를 반환하는 <code class="docutils literal notranslate"><span class="pre">bfs(graph,</span> <span class="pre">start)</span></code>를 정의하라.</p>
+<p>위의 graph에서 start가 0이면 <code class="docutils literal notranslate"><span class="pre">{0:0,</span> <span class="pre">1:1,</span> <span class="pre">2:2,</span> <span class="pre">3:1,</span> <span class="pre">5:3,</span> <span class="pre">6:2,</span> <span class="pre">7:3,</span> <span class="pre">8:4}</span></code>를 반환한다.</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">14.5.4. </span>문제<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>힙큐(heapq)는 리스트를 특별하게 정리해 놓은 형태로 작은 값을 금방 꺼낼 수 있다.
+예를 들어, 다음과 같이 사용할 수 있다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">heapq</span>
+
+<span class="n">pq</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># 빈리스트 </span>
+
+<span class="c1"># 값 넣기</span>
+<span class="c1"># heapq.heappush(pq, (우선순위, 값))</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">pq</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">))</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">pq</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">))</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">pq</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">))</span>
+
+<span class="c1"># 값 꺼내기</span>
+<span class="c1"># priority, value = heapq.heappop(pq)</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">pq</span><span class="p">)</span> <span class="c1"># (1, &#39;A&#39;)</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">pq</span><span class="p">)</span> <span class="c1"># (2, &#39;B&#39;)</span>
+<span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">pq</span><span class="p">)</span> <span class="c1"># (3, &#39;C&#39;)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">queue</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">PriorityQueue</span></code> 대신 <code class="docutils literal notranslate"><span class="pre">heapq</span></code>를 사용하여 <code class="docutils literal notranslate"><span class="pre">Dijkstra2()</span></code> 함수를 정의하라.
+단, 노드는 그림과 같이 A, B, C, …이고, 이를 그래프로 표현하면 다음과 같다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span>
+    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span>
+    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+    <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Dijkstra2</span><span class="p">((</span><span class="n">graph</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">)))</span> <span class="c1"># 4</span>
+</pre></div>
+</div>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/hj617kim/pybook_core/master/images/ch14/heapq_graph.png" style="width:350px;">
+</div>
 </section>
 </section>
 </section>
@@ -920,6 +1381,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">14.5. 연습 문제</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">14.5.1. 문제</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">14.5.2. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.5.3. 문제</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">14.5.4. 문제</a></li>
 </ul>
 </li>
 </ul>
